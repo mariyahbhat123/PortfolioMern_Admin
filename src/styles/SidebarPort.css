@@ -1,3 +1,37 @@
 .sidebarCon {
-  height: 100vh;
+  width: 100%;
+}
+
+.hamburgerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.childContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebarButton {
+  display: flex;
+  align-items: center; /* Vertically center */
+  justify-content: flex-start; /* Align icon + text to left */
+  gap: 10px; /* Space between icon and text */
+  padding: 10px 16px;
+  border: 1px solid #7b5fa1;
+  border-radius: 10px;
+  background-color: #c4aaf3;
+  color: #1a1a1a;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.textSidebar {
+  font-weight: 500;
+  color: white;
 }

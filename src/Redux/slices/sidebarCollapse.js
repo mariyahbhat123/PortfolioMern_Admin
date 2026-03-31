@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isCollapsed: true,
+  isCollapsed: false,
 };
 
 const sidebarCollapse = createSlice({

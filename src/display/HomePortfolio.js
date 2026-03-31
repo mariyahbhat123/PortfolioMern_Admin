@@ -30,49 +30,38 @@ export default function HomePortfolio() {
     (state) => state.bodyPortHandleSlice.isOpenDashboard
   );
   return (
-    <div>
-      {" "}
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <div
-          className={!isCollaped ? "sidebarNotCollapsed" : "sidebarCollapsed"}
-          // style={
-          //   !isCollaped
-          //     ? {
+    <div className="flex flex-col h-screen">
+      {/* Top Navbar */}
+      <div>
+        <NavBarPortfolio />
+      </div>
 
-          //       }
-          //     : {  }
-          // }
+      {/* Main Content Area */}
+      <div className="flex flex-grow overflow-hidden">
+        {/* Sidebar */}
+        <div
+          className={`transition-all duration-300 ${
+            !isCollaped ? "w-64 sidebarNotCollapsed" : "w-20 sidebarCollapsed"
+          } border-r`}
         >
           <SidebarPortFolio />
-        </div>{" "}
-        <div className="bodyPortfolio">
-          <div className="navPortContainer">
-            <NavBarPortfolio />
-          </div>
-          <div className="bodyContainer">
-            {}{" "}
-            {isOpenDashboard === true ? (
-              <div>
-                <DashBoardPortFolio />
-              </div>
-            ) : isOpenAbout === true ? (
-              <div>
-                <AboutPortfolio />
-              </div>
-            ) : isOpenSkill === true ? (
-              <div>
-                <SkillPortfolio />
-              </div>
-            ) : isOpenProject === true ? (
-              <div>
-                <ProjectPortfolio />
-              </div>
-            ) : (
-              <div>
-                <DashBoardPortFolio />
-              </div>
-            )}
-          </div>
+        </div>
+
+        {/* Page Content */}
+        <div className="flex-1 p-8 overflow-y-auto">
+          {isOpenDashboard ? (
+            <DashBoardPortFolio />
+          ) : isOpenAbout ? (
+            <AboutPortfolio />
+          ) : isOpenSkill ? (
+            <div className="h-full">
+              <SkillPortfolio />
+            </div>
+          ) : isOpenProject ? (
+            <ProjectPortfolio />
+          ) : (
+            <DashBoardPortFolio />
+          )}
         </div>
       </div>
     </div>

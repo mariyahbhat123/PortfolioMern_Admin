@@ -1,4 +1,4 @@
-.outerMostContainerSkill {
+.outerMostContainerProject {
   display: flex;
 
   justify-content: space-evenly;
@@ -6,7 +6,7 @@
   align-items: center;
   height: 92vh;
 }
-.innerSkillContainer {
+.innerProjectContainer {
   border: 1px solid black;
   width: 38%;
   padding: 1%;
@@ -24,12 +24,30 @@
   );
 }
 
-.skillAdd {
+.projectAdd {
   color: #695aa6;
   font-weight: bold;
 }
 
-.skillCardOuterContainer {
+.projectLabel {
+  color: #695aa6;
+  font-weight: 500;
+  margin-bottom: 2%;
+}
+.projectInpText {
+  width: 80%;
+  margin-bottom: 5%;
+  padding: 1.5%;
+}
+.projectSubmitBtn {
+  width: 60%;
+  padding: 1.2%;
+  border: 2px solid #695aa6;
+  color: #695aa6;
+  font-weight: 500;
+  background-color: #fff;
+}
+.projectCardOuterContainer {
   border: 1px solid #695aa6;
   width: 50%;
   padding: 1%;
@@ -45,30 +63,4 @@
     rgba(105, 90, 166, 0.35) 99%,
     rgba(105, 90, 166, 0.5) 100%
   );
-}
-.skillLabel {
-  color: #695aa6;
-  font-weight: 500;
-  margin-bottom: 2%;
-}
-.skillInpText {
-  width: 80%;
-  margin-bottom: 5%;
-  padding: 1.5%;
-}
-.skillSubmitBtn {
-  width: 60%;
-  padding: 1.2%;
-  border: 2px solid #695aa6;
-  color: #695aa6;
-  font-weight: 500;
-  background-color: #fff;
-}
-.titleSkill {
-  font-weight: 800;
-
-  font-size: 17px;
-}
-.titleRowSkill th {
-  color: #695aa6;
 }

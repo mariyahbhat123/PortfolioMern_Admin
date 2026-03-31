@@ -4,7 +4,7 @@ import "../styles/SidebarPort.css";
 import Button from "react-bootstrap/Button";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+
 import {
   isCollapsedSidebar,
   isNotCollapsedSidebar,
@@ -38,123 +38,133 @@ export default function SidebarPortFolio() {
   // const handleAbout = () => {
   //   dispatch(openAbout());
   // };
+
   return (
-    <div className="sidebarCon">
-      <div>
-        <div className="hamburgerContainer">
-          <div className="containerChildIcon">
+    <div className="sidebarCon pb-3 min-h-[89.8vh]">
+      <div className="h-full flex flex-col justify-between">
+        <div
+          className="flex
+          flex-col
+            justify-center
+            items-center space-y-4 p-2"
+        >
+          <div
+            className={`
+          w-[90%]
+             appearance-none mt-2`}
+          >
             <Button
               variant="none"
               onClick={handleCollapse}
-              style={
+              className={`text-white w-[100%] border border-[#7b5fa1] bg-[#c4aaf3] rounded-[10px] ${
                 !isCollaped
-                  ? {
-                      width: "100%",
-                      display: "flex",
-                      justifyContent: "space-evenly",
-                    }
-                  : { width: "100%" }
-              }
+                  ? " flex items-center justify-start gap-4 px-[10px] py-4   text-base cursor-pointer transition-colors"
+                  : "py-2"
+              }`}
             >
               {" "}
               <MenuIcon sx={{ fontSize: "26px" }} />
-              {!isCollaped ? <span>Menu</span> : ""}
+              {!isCollaped ? <span className="textSidebar">Menu</span> : ""}
             </Button>
           </div>
-        </div>
-        <div>
-          <div className="containerChildIcon mt-3">
+
+          <div
+            className={` 
+             w-[90%]
+               appearance-none`}
+          >
             <Button
               variant="none"
-              style={
+              className={`text-white w-[100%] border border-[#7b5fa1] bg-[#c4aaf3] rounded-[10px] ${
                 !isCollaped
-                  ? {
-                      width: "100%",
-                      display: "flex",
-                      justifyContent: "space-evenly",
-                    }
-                  : { width: "100%" }
-              }
+                  ? " flex items-center justify-start gap-4 px-[10px] py-4   text-base cursor-pointer transition-colors"
+                  : "py-2"
+              }`}
               onClick={() => dispatch(openDashboard())}
             >
               <DashboardIcon sx={{ fontSize: "23px" }} />
-              {!isCollaped ? <span>Dashboard</span> : ""}
+              {!isCollaped ? (
+                <span className="textSidebar">Dashboard</span>
+              ) : (
+                ""
+              )}
             </Button>
           </div>
-          <div className="containerChildIcon mt-3">
+          <div
+            className={`
+           w-[90%]
+              appearance-none`}
+          >
             <Button
               variant="none"
-              style={
+              className={`text-white w-[100%] border border-[#7b5fa1] bg-[#c4aaf3] rounded-[10px] ${
                 !isCollaped
-                  ? {
-                      width: "100%",
-                      display: "flex",
-                      justifyContent: "space-evenly",
-                    }
-                  : { width: "100%" }
-              }
+                  ? " flex items-center justify-start gap-4 px-[10px] py-4   text-base cursor-pointer transition-colors"
+                  : "py-2"
+              }`}
               onClick={() => dispatch(openAboutEdit())}
             >
               <InfoIcon sx={{ fontSize: "23px" }} />
-              {!isCollaped ? <span>About</span> : ""}
+              {!isCollaped ? <span className="textSidebar">About</span> : ""}
             </Button>
           </div>
-          <div className="containerChildIcon mt-3">
+          <div
+            className={`
+           w-[90%]
+            appearance-none`}
+          >
             <Button
               variant="none"
-              style={
+              className={`text-white w-[100%] border border-[#7b5fa1] bg-[#c4aaf3] rounded-[10px] ${
                 !isCollaped
-                  ? {
-                      width: "100%",
-                      display: "flex",
-                      justifyContent: "space-evenly",
-                    }
-                  : { width: "100%" }
-              }
+                  ? " flex items-center justify-start gap-4 px-[10px] py-4   text-base cursor-pointer transition-colors"
+                  : "py-2"
+              }`}
               onClick={() => dispatch(openSkill())}
             >
               <PsychologyIcon sx={{ fontSize: "23px" }} />
-              {!isCollaped ? <span>Skill</span> : ""}
+              {!isCollaped ? <span className="textSidebar">Skill</span> : ""}
             </Button>
           </div>
-          <div className="containerChildIcon mt-3">
+          <div
+            className={` 
+         w-[90%]
+         appearance-none`}
+          >
             <Button
               variant="none"
-              style={
+              className={`text-white w-[100%] border border-[#7b5fa1] bg-[#c4aaf3] rounded-[10px] ${
                 !isCollaped
-                  ? {
-                      width: "100%",
-                      display: "flex",
-                      justifyContent: "space-evenly",
-                    }
-                  : { width: "100%" }
-              }
+                  ? " flex items-center justify-start gap-4 px-[10px] py-4   text-base cursor-pointer transition-colors"
+                  : "py-2"
+              }`}
               onClick={() => dispatch(openProject())}
             >
               <ChecklistRtlIcon sx={{ fontSize: "23px" }} />
-              {!isCollaped ? <span>Project</span> : ""}
+              {!isCollaped ? <span className="textSidebar">Project</span> : ""}
             </Button>
           </div>
         </div>
-        <div
-          className="buttonContainerSide"
-          style={!isCollaped ? { height: "60vh" } : { height: "60vh" }}
-        >
-          <Button
-            variant="none"
-            style={
-              !isCollaped
-                ? {
-                    marginTop: "auto",
-                    display: "flex",
-                    justifyContent: "space-evenly",
-                  }
-                : { marginTop: "auto" }
-            }
+        <div className="flex justify-center px-2">
+          <div
+            className={` 
+         w-[90%]
+         appearance-none`}
+            // className="buttonContainerSide"
+            // style={!isCollaped ? { height: "50vh" } : { height: "50vh" }}
           >
-            <ExitToAppIcon sx={{ fontSize: "23px" }} />
-            {!isCollaped ? <span>Logout</span> : ""}
-          </Button>
+            <Button
+              variant="none"
+              className={`text-white w-[100%] border border-[#7b5fa1] bg-[#c4aaf3] rounded-[10px] ${
+                !isCollaped
+                  ? " flex items-center justify-start gap-4 px-[10px] py-4   text-base cursor-pointer transition-colors"
+                  : "py-2"
+              }`}
+            >
+              <ExitToAppIcon sx={{ fontSize: "23px" }} />
+              {!isCollaped ? <span className="textSidebar">Logout</span> : ""}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
