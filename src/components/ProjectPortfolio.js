@@ -144,7 +144,7 @@ export function AddedProjects({ handleEditData, projectData, fetchProject }) {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
       console.log(response, "DELETE RESPONSE");
       fetchProject();
@@ -416,25 +416,55 @@ export const UpdateProjectModal = ({ onClose, onSuccess, editData }) => {
     }
   };
 
+  // const handleUpdateData = async () => {
+  //   // const formData = new FormData();
+  //   // if (editData.technologyName !== upDatedkillData.name) {
+  //   //   formData.append("technologyName", upDatedkillData.name);
+  //   // }
+  //   // if (editData.description !== upDatedkillData.description) {
+  //   //   formData.append("description", upDatedkillData.description);
+  //   // }
+  //   // if (editData.level !== upDatedkillData.level) {
+  //   //   formData.append("level", upDatedkillData.level);
+  //   // }
+  //   try {
+  //     const res = await fetch(
+  //       `http://localhost:5000/api/updateProject/${editData._id}`,
+  //       {
+  //         method: "PUT",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify(upDatedProjectData),
+  //       }
+  //     );
+
+  //     console.log(res, "response update");
+  //     onClose();
+  //     onSuccess();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   const handleUpdateData = async () => {
-    // const formData = new FormData();
-    // if (editData.technologyName !== upDatedkillData.name) {
-    //   formData.append("technologyName", upDatedkillData.name);
-    // }
-    // if (editData.description !== upDatedkillData.description) {
-    //   formData.append("description", upDatedkillData.description);
-    // }
-    // if (editData.level !== upDatedkillData.level) {
-    //   formData.append("level", upDatedkillData.level);
-    // }
     try {
+      const formData = new FormData();
+
+      // Append text fields
+      formData.append("name", upDatedProjectData.name);
+      formData.append("description", upDatedProjectData.description);
+      formData.append("goTo", upDatedProjectData.goTo);
+      console.log(file, "FILE");
+      // Append image ONLY if user selected a new one
+      if (file) {
+        formData.append("image", file);
+      }
+
       const res = await fetch(
         `http://localhost:5000/api/updateProject/${editData._id}`,
         {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(upDatedProjectData),
-        }
+          body: formData,
+        },
       );
 
       console.log(res, "response update");
@@ -444,7 +474,6 @@ export const UpdateProjectModal = ({ onClose, onSuccess, editData }) => {
       console.log(error);
     }
   };
-
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       {/* Actual modal */}
@@ -552,26 +581,29 @@ export const UpdateProjectModal = ({ onClose, onSuccess, editData }) => {
                 preview || editData ? "flex-col h-48" : "h-40"
               }`}
             >
-              {preview ||
-                (editData && (
-                  <div className="mb-3 relative">
-                    <img
-                      src={
-                        preview !== null
-                          ? preview
-                          : `http://localhost:5000/skillImages/${editData.image}`
-                      }
-                      alt="Preview"
-                      className="mx-auto h-32 w-32 object-cover rounded-md shadow"
-                    />
-                    <button
-                      className="absolute z-20 translate-x-[55px] translate-y-[-135px] bg-white rounded-full p-1 shadow-md"
-                      onClick={() => setPreview(null)}
-                    >
-                      <MdClose className="w-4 h-4" />
-                    </button>
-                  </div>
-                ))}
+              {(preview || editData?.image) && (
+                <div className="mb-3 relative">
+                  <img
+                    src={
+                      preview
+                        ? preview
+                        : `http://localhost:5000/projectImages/${editData.image}`
+                    }
+                    alt="Preview"
+                    className="mx-auto h-32 w-32 object-cover rounded-md shadow"
+                  />
+                  <button
+                    type="button"
+                    className="absolute z-20 translate-x-[55px] translate-y-[-135px] bg-white rounded-full p-1 shadow-md"
+                    onClick={() => {
+                      setPreview(null);
+                      setFile(null);
+                    }}
+                  >
+                    <MdClose className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
               <label
                 htmlFor="file-upload"
                 className="cursor-pointer text-blue-600 underline"
